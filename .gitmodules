@@ -1,3 +1,6 @@
 [submodule "zsh/.zprezto"]
 	path = zsh/.zprezto
 	url = git@github.com:rosenbavm/prezto.git
+[submodule "x/.Xresources.d/base16"]
+	path = x/.Xresources.d/base16
+	url = https://github.com/chriskempson/base16

@@ -1,0 +1,2 @@
+#include ".Xresources.d/default"
+#include ".Xresources.d/base16/tomorrow.dark.256.xresources"

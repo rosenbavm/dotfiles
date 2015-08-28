@@ -1,0 +1,4 @@
+URxvt.scrollBar: false
+*.termName: xterm
+*.fading: 30
+*.font: 7x13
