@@ -1,0 +1,14 @@
+#!/usr/bin/env hwsh
+function run() {
+pgrep $1 || "$@" &>/dev/null &
+}
+
+setxkbmap -option caps:super
+herbstclient pad 0 24
+run xcompmgr
+run dunst
+run xfce4-panel --disable-wm-check
+run xfce4-power-manager
+run nm-applet
+run pasystray
+xbindkeys -p

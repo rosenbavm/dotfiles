@@ -7,3 +7,6 @@
 [submodule "x/.Xresources.d/base16-xresources"]
 	path = x/.Xresources.d/base16-xresources
 	url = https://github.com/chriskempson/base16-xresources
+[submodule "t410/.icons/numix-icon-theme"]
+	path = t410/.icons/numix-icon-theme
+	url = https://github.com/numixproject/numix-icon-theme

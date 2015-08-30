@@ -1,0 +1,11 @@
+#!/usr/bin/env hwsh
+keybind=Shift-space
+user=mr
+server=192.168.1.145
+pgrep xpra || xpra attach ssh:$user@$server &
+case "$(echo "detach:ghb:makemkv:picard" | sed 's/:/\n/g' | dmenu -f $DmenuArgs)" in
+	"detach") xpra detach ssh:$user@$server;;
+	"ghb") ssh $user@$server "DISPLAY=:1 ghb";;
+	"makemkv") ssh $user@$server "DISPLAY=:1 makemkv";;
+	"picard") ssh $user@$server "DISPLAY=:1 picard";;
+esac
