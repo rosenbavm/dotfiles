@@ -1,4 +1,10 @@
 #!/bin/bash
-export FONT="-*-terminus-*-r-normal-*-22-*-*-*-*-*-iso8859-*"
-export DMENU_ARGS="-i -fn $FONT -nb #000000 -nf #cccccc -sb #333333 -sf #ffffff"
+set -a
+export HLWM_PATH="$HOME/.config/herbstluftwm"
+HLWMRC="$HLWM_PATH/herbstluftrc"
+if [ -f "$HLWMRC" ]; then
+	source "$HLWMRC"
+else
+	touch "$HLWMRC"
+fi
 exec /bin/bash "$@"

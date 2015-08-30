@@ -26,7 +26,7 @@ hc keybind $Mod-Shift-q chain . emit_hook CloseWM . quit
 hc keybind $Mod-Shift-r reload
 hc keybind $Mod-Shift-c close
 hc keybind $Mod-Shift-Return spawn urxvt
-hc keybind $Mod-p spawn dmenu_run $DMENU_ARGS
+hc keybind $Mod-p spawn dmenu_run $DmenuArgs
 hc keybind $Mod-Tab use_previous
 hc keybind $Mod-w remove
 hc keybind $Mod-space cycle_layout 2
@@ -65,7 +65,6 @@ hc rule windowtype~"_NET_WM_WINDOW_TYPE_(DIALOG|UTILITY|SPLASH)" pseudotile=on
 hc rule windowtype~"_NET_WM_WINDOW_TYPE_(NOTIFICATION|DOCK)" manage=off
 
 # Add custom commands
-HLWM_PATH=${XDG_CONFIG_HOME:-"$HOME/.config/"}"herbstluftwm"
 while read command; do
 	keybind=$(grep keybind "$command" | awk -F'=' '{ print $2 }')
 	hc keybind $Mod-$keybind spawn "$command"
