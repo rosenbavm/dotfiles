@@ -1,0 +1,78 @@
+#!/usr/bin/env hwsh
+
+function hc() { cmds="$cmds ~.. $@"; }
+function hcn() { /usr/bin/herbstclient "$@"; }
+
+hcn set frame_border_width 0
+hcn set window_border_width 0
+hcn set frame_gap 0
+hcn set window_gap 0
+hcn set always_show_frame 0
+hcn set frame_bg_transparent 1
+
+hc keyunbind --all
+
+# Tags
+hc rename default 1 || true
+for i in {1..5}; do
+	hc add "$i"
+	hc keybind "$Mod-$i" use "$i"
+	hc keybind "$Mod-Shift-$i" move "$i"
+done
+hc chain . add gimp . floating gimp on
+
+# Keybindings
+hc keybind $Mod-Shift-q chain . emit_hook CloseWM . quit
+hc keybind $Mod-Shift-r reload
+hc keybind $Mod-Shift-c close
+hc keybind $Mod-Shift-Return spawn urxvt
+hc keybind $Mod-p spawn dmenu_run $DMENU_ARGS
+hc keybind $Mod-Tab use_previous
+hc keybind $Mod-w remove
+hc keybind $Mod-space cycle_layout 2
+hc keybind $Mod-o split horizontal .5
+hc keybind $Mod-u split vertical .5
+RESIZESTEP=0.025
+hc keybind Super-h resize left +$RESIZESTEP
+hc keybind Super-j resize down +$RESIZESTEP
+hc keybind Super-k resize up +$RESIZESTEP
+hc keybind Super-l resize right +$RESIZESTEP
+hc keybind $Mod-i cycle 
+hc keybind $Mod-Shift-i cycle -1
+hc keybind $Mod-h focus left
+hc keybind $Mod-j focus down
+hc keybind $Mod-k focus up
+hc keybind $Mod-l focus right
+hc keybind $Mod-Shift-h shift left
+hc keybind $Mod-Shift-j shift down
+hc keybind $Mod-Shift-k shift up
+hc keybind $Mod-Shift-l shift right
+
+# Mouse
+hc mouseunbind
+hc mousebind $Mod-Button1 move
+hc mousebind $Mod-Button2 zoom
+hc mousebind $Mod-Button3 resize
+hc set focus_follows_mouse 0
+
+# Rules
+hc unrule --all
+hc rule focus=on # focus new client
+hc rule class~"(Iceweasel.*)" tag=2
+hc rule class~"(Chromium.*)" tag=2
+hc rule class~"(Gimp.*)" tag=gimp
+hc rule windowtype~"_NET_WM_WINDOW_TYPE_(DIALOG|UTILITY|SPLASH)" pseudotile=on
+hc rule windowtype~"_NET_WM_WINDOW_TYPE_(NOTIFICATION|DOCK)" manage=off
+
+# Add custom commands
+HLWM_PATH=${XDG_CONFIG_HOME:-"$HOME/.config/"}"herbstluftwm"
+while read command; do
+	keybind=$(grep keybind "$command" | awk -F'=' '{ print $2 }')
+	hc keybind $Mod-$keybind spawn "$command"
+done < <(find $HLWM_PATH/commands -type f -executable)
+
+hc unlock
+
+/usr/bin/herbstclient chain $cmds&
+
+[ -f "$HLWM_PATH/services" ] && setsid $HLWM_PATH/services

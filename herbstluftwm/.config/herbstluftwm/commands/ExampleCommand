@@ -1,0 +1,3 @@
+#!/usr/bin/env hwsh
+keybind=Shift-g
+notify-send "You pressed Mod-$keybind"

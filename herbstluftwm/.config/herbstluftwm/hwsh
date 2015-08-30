@@ -1,0 +1,4 @@
+#!/bin/bash
+export FONT="-*-terminus-*-r-normal-*-22-*-*-*-*-*-iso8859-*"
+export DMENU_ARGS="-i -fn $FONT -nb #000000 -nf #cccccc -sb #333333 -sf #ffffff"
+exec /bin/bash "$@"
