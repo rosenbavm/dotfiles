@@ -1,0 +1,12 @@
+set guioptions=s
+set findflags=rL
+set findcase=smart
+set defsearch=startpage
+nmap <BS> H
+nmap w :open wiktionary-en 
+nmap W :tabopen wiktionary-en 
+nmap J gt
+nmap K gT
+map -b j 5j
+map -b k 5k
+" vim:ft=vim
