@@ -68,7 +68,7 @@ hc rule windowtype~"_NET_WM_WINDOW_TYPE_(NOTIFICATION|DOCK)" manage=off
 while read command; do
 	keybind=$(grep keybind "$command" | awk -F'=' '{ print $2 }')
 	hc keybind $Mod-$keybind spawn "$command"
-done < <(find $HLWM_PATH/commands -type f -executable)
+done < <(find $HLWM_PATH/commands . -type f -executable)
 
 hc unlock
 

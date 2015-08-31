@@ -1,8 +1,0 @@
-include "/usr/share/X11/locale/en_US.UTF-8/Compose"
-<Multi_key> <n> <n> : "ñ" U00F1
-<Multi_key> <u> <a> : "ä" U00E4
-<Multi_key> <u> <o> : "ö" U00F6
-<Multi_key> <u> <u> : "ü" U00FC
-<Multi_key> <u> <A> : "Ä" U00CF
-<Multi_key> <u> <O> : "Ö" U00D6
-<Multi_key> <u> <U> : "Ü" U00DC

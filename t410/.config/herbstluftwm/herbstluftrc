@@ -1,3 +1,0 @@
-Mod="Mod1"
-Font="-*-terminus-*-r-normal-*-22-*-*-*-*-*-iso8859-*"
-DmenuArgs="-i -fn $Font -nb #DCDAD5 -nf #141517 -sb #DCDAD5 -sf #B80000"
