@@ -22,11 +22,9 @@ done
 hc chain . add gimp . floating gimp on
 
 # Keybindings
-hc keybind $Mod-Shift-q chain . emit_hook CloseWM . quit
+hc keybind $Mod-Shift-q quit
 hc keybind $Mod-Shift-r reload
 hc keybind $Mod-Shift-c close
-hc keybind $Mod-Shift-Return spawn urxvt
-hc keybind $Mod-p spawn dmenu_run $DmenuArgs
 hc keybind $Mod-Tab use_previous
 hc keybind $Mod-w remove
 hc keybind $Mod-space cycle_layout 2
