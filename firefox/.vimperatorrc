@@ -1,7 +1,9 @@
 set gui=none,tabs
 nmap <BS> H
-nmap w :open wiktionary-en 
-nmap W :tabopen wiktionary-en
+nmap w :open wiktionary 
+nmap W :tabopen wiktionary 
+nmap s :open startpage 
+nmap S :tabopen startpage 
 nmap J gt
 nmap K gT
 " vim: ft=vim
