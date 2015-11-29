@@ -57,7 +57,7 @@ hc set focus_follows_mouse 0
 hc unrule --all
 hc rule focus=on # focus new client
 hc rule class~"(Iceweasel.*)" tag=2
-hc rule class~"(Chromium.*)" tag=2
+hc rule class~"(Chrom.*)" tag=2
 hc rule class~"(Gimp.*)" tag=gimp
 hc rule windowtype~"_NET_WM_WINDOW_TYPE_(DIALOG|UTILITY|SPLASH)" pseudotile=on
 hc rule windowtype~"_NET_WM_WINDOW_TYPE_(NOTIFICATION|DOCK)" manage=off
