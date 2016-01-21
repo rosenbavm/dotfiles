@@ -19,7 +19,6 @@ for i in {1..5}; do
 	hc keybind "$Mod-$i" use "$i"
 	hc keybind "$Mod-Shift-$i" move "$i"
 done
-hc chain . add gimp . floating gimp on
 
 # Keybindings
 hc keybind $Mod-Shift-q quit
@@ -58,18 +57,19 @@ hc unrule --all
 hc rule focus=on # focus new client
 hc rule class~"(Iceweasel.*)" tag=2
 hc rule class~"(Chrom.*)" tag=2
-hc rule class~"(Gimp.*)" tag=gimp
+#hc rule class~"(Gimp.*)" tag=gimp
 hc rule windowtype~"_NET_WM_WINDOW_TYPE_(DIALOG|UTILITY|SPLASH)" pseudotile=on
 hc rule windowtype~"_NET_WM_WINDOW_TYPE_(NOTIFICATION|DOCK)" manage=off
 
 # Add custom commands
 while read command; do
+	echo "Processing $command" >> ~/tmp
 	keybind=$(grep keybind "$command" | awk -F'=' '{ print $2 }')
 	hc keybind $Mod-$keybind spawn "$command"
-done < <(find $HLWM_PATH/commands . -type f -executable)
+done < <(find $HLWM_PATH/commands -type f -executable)
 
 hc unlock
 
-/usr/bin/herbstclient chain $cmds&
+/usr/bin/herbstclient chain $cmds &
 
-[ -f "$HLWM_PATH/services" ] && setsid $HLWM_PATH/services
+[ -f "$HLWM_PATH/services" ] && setsid "$HLWM_PATH/services"
